@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>读者添加</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/admin_header.css}">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            border-top: 5px solid #87CEEB;
+            width: 45%;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn-submit, .btn-export {
+            width: 150px;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        .row {
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{admin_header :: navbar}"></div>
+<div class="container text-center">
+    <div class="row">
+        <!-- 导入Excel文件部分 -->
+        <div class="col-md-5 form-container">
+            <div class="form-title">导入读者信息</div>
+            <div th:if="${message}" class="alert alert-danger" role="alert">
+                <p th:text="${message}"></p>
+            </div>
+            <form id="importForm" th:action="@{/readerInfo/import}" method="post" enctype="multipart/form-data" >
+                <div class="mb-3">
+                    <label for="importFile" class="form-label">导入读者信息</label>
+                    <input type="file" class="form-control" id="importFile" name="file" accept=".xlsx, .xls">
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary btn-submit" >导入</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 导出Excel文件部分 -->
+        <div class="col-md-5 form-container">
+            <div class="form-title">导出读者信息</div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-success btn-export"
+                        onclick="window.location.href='/readerInfo/exportReaderInfo'">导出
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    fetch('admin_header.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error fetching reader_header:', error));
+</script>
+<script>
+    function importReaders() {
+        // 获取上传的文件
+        const fileInput = document.getElementById('importFile');
+        const file = fileInput.files[0];
+
+        // 模拟上传文件的逻辑，实际情况需要发送到后端处理
+        console.log('上传文件:', file);
+        alert('上传文件成功！');
+    }
+
+    function exportReaders() {
+        // 获取选择的导出选项
+        const exportOptions = document.getElementById('exportOptions').value;
+
+        // 模拟导出文件的逻辑，实际情况需要发送到后端处理
+        console.log('导出选项:', exportOptions);
+        alert('导出文件成功！');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有读者</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/admin_header.css}">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .table-container {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+            border-radius: 20px; /* 让容器的四角圆润 */
+            border-top: 5px solid #87CEEB;
+        }
+
+        .table-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            text-align: center; /* 模态框内容居中 */
+        }
+
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* 模态框本身居中 */
+            min-height: 100vh; /* 高度占满全屏 */
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{admin_header :: navbar}"></div>
+<div class="container">
+    <div class="table-container">
+        <div class="table-title">读者管理</div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>读者号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>生日</th>
+                <th>地址</th>
+                <th>电话</th>
+                <th>编辑</th>
+                <th>删除</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="readerInfo : ${readerInfoList}">
+                <td th:text="${readerInfo.reader_id}"></td>
+                <td th:text="${readerInfo.name}"></td>
+                <td th:text="${readerInfo.sex}"></td>
+                <td th:text="${readerInfo.formattedBrith}"></td>
+                <td th:text="${readerInfo.address}"></td>
+                <td th:text="${readerInfo.phone}"></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <a th:href="@{/readerInfo/edit/{id}(id=${readerInfo.reader_id})}" class="btn btn-success">编辑</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <a th:href="@{/readerInfo/delete/{id}(id=${readerInfo.reader_id})}" class="btn btn-danger">删除</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Bootstrap 模态框 -->
+<!--<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="deleteModalLabel">确认删除</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                你确定要删除这个读者吗？-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>-->
+<!--                <button type="button" class="btn btn-danger" id="confirmDeleteButton">删除</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    fetch('admin_header.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error fetching reader_header:', error));
+</script>
+<!--<script>-->
+<!--    let deleteReaderId;-->
+
+<!--    function editReader(readerId) {-->
+<!--        window.location.href = 'admin_reader_edit.html?id=' + readerId;-->
+<!--    }-->
+
+<!--    function showDeleteModal(readerId) {-->
+<!--        deleteReaderId = readerId;-->
+<!--        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));-->
+<!--        deleteModal.show();-->
+<!--    }-->
+
+<!--    document.getElementById('confirmDeleteButton').addEventListener('click', function () {-->
+<!--        deleteReader(deleteReaderId);-->
+<!--    });-->
+
+<!--    function deleteReader(readerId) {-->
+<!--        console.log('删除读者：' + readerId);-->
+<!--        // 在这里添加实际的删除逻辑，例如通过Ajax请求后端接口-->
+<!--        const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));-->
+<!--        deleteModal.hide();-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>

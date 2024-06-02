@@ -1,0 +1,80 @@
+@font-face {
+    font-family: '佛系字体';  /* 自定义字体的名称 */
+    src: url('../font/Slidefu-Regular.ttf') format('ttf');  /* 字体文件的路径和格式 */
+}
+
+body {
+    font-family: '佛系字体', sans-serif;  /* 应用自定义字体到整个页面 */
+}
+
+.subject {
+    display: flex;
+    width: 60%;
+    margin: 2% auto;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 20px;
+    border-top: 5px solid #87CEEB;
+}
+.left-section,
+.right-section {
+    flex: 1;
+}
+/* ***************左侧图片******************** */
+.left-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+/* ***************右侧部分******************** */
+.right-section {
+    flex: 1;
+   padding: 30px;
+}
+.right-section h2 {
+    font-family: 华文行楷;
+    font-size: 45px;
+    margin-top: 30%;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 10%;
+    width: 100%;
+}
+
+.form-group label {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.form-group input {
+    flex: 1;
+   height: 50px;
+}
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 使按钮居中 */
+}
+#loginButton {
+    width:350px;
+    background-color: #3498db;  /* 天蓝色背景 */
+    border: none;  /* 去除按钮边框 */
+    color: white;  /* 按钮文字颜色 */
+    padding: 10px;  /* 按钮内边距 */
+    border-radius: 5px;  /* 圆角 */
+    cursor: pointer;  /* 鼠标悬停时显示手型光标 */
+}
+#loginButton:hover {
+    background-color: #4A92BA;  /* 按钮悬停时的颜色 */
+}

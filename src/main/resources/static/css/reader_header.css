@@ -1,0 +1,27 @@
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加底部阴影 */
+}
+
+.navbar .search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar .search-container form {
+    width: 50%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right .nav-item {
+    margin-left: 15px;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-family: 华文行楷;
+    font-weight: bold;
+}

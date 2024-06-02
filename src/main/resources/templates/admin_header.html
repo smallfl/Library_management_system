@@ -1,0 +1,65 @@
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/user/admin_dashboard}">图书馆管理</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            图书管理
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <li><a class="dropdown-item" th:href="@{/book/admin_books}">全部图书</a></li>
+                            <li><a class="dropdown-item" th:href="@{/book/addBook}">增加图书</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            读者管理
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <li><a class="dropdown-item" th:href="@{/readerInfo/readerAllInfo}">全部读者</a></li>
+                            <li><a class="dropdown-item" th:href="@{/readerInfo/addReader}">增加读者</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            借还管理
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <li><a class="dropdown-item" th:href="@{/lend/getAllLend}">借还日志</a></li>
+                            <li><a class="dropdown-item" th:href="@{/lend/lendBookExport}">导出日志</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            修改密码
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <li><a class="dropdown-item" th:href="@{/admin/adminInfo}">修改密码</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="search-container">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <ul class="navbar-nav nav-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            登录人姓名
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown4">
+                            <li><a class="dropdown-item" th:href="@{/user/}">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
